@@ -5,8 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tweetero.api.dto.UserDto;
-import com.tweetero.api.model.User;
+import com.tweetero.api.model.Users;
 import com.tweetero.api.repository.UserRepository;
 
 @Service
@@ -14,11 +13,11 @@ public class UserService {
 
     @Autowired UserRepository repository;
 
-    public List<User> listAll(){
+    public List<Users> listAll(){
         return repository.findAll();
     }
 
-    public void create(User data) {
+    public void create(Users data) {
         repository.save(data);
     }
 

@@ -1,6 +1,6 @@
 package com.tweetero.api.model;
 
-import com.tweetero.api.dto.UserDto;
+import com.tweetero.api.dto.TweetDto;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,11 +13,12 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-public class User {
+public class Tweet {
     
-    public User(UserDto req) {
-        this.username = req.username();
-        this.avatar = req.avatar();
+    public Tweet(TweetDto data) {
+        this.username = data.username();
+        this.avatar = data.avatar();
+        this.text = data.text();
     }
 
     @Id
@@ -29,4 +30,7 @@ public class User {
 
     @Column()
     private String avatar;
+
+    @Column()
+    private String text;
 }
