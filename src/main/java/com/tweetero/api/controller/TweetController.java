@@ -28,6 +28,6 @@ public class TweetController {
 
     @GetMapping
     public Page<Tweet> listAll(@PageableDefault(size = 5) Pageable pageable) {
-        return service.listAll();
+        return service.listAll(pageable);
     }
 }

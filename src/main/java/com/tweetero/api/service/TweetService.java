@@ -20,11 +20,10 @@ public class TweetService {
         repository.save(data);
     }
 
-    public Page<Tweet> listAll() {
+    public Page<Tweet> listAll(Pageable pageable) {
         int page = 0;
         int size = 5;
         PageRequest pageRequest = PageRequest.of(page, size);
         return new PageImpl<>(repository.findAll(), pageRequest, size);
     }
 }
- 
