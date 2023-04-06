@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -19,8 +20,11 @@ public class TweetService {
         repository.save(data);
     }
 
-    public Page<Tweet> listAll(Pageable pageable) {
-        return repository.findAll(pageable);
+    public Page<Tweet> listAll() {
+        int page = 0;
+        int size = 5;
+        PageRequest pageRequest = PageRequest.of(page, size);
+        return new PageImpl<>(repository.findAll(), pageRequest, size);
     }
 }
  
