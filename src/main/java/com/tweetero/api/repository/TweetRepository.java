@@ -7,5 +7,5 @@ import com.tweetero.api.model.Tweet;
 
 @Repository
 public interface TweetRepository extends JpaRepository<Tweet, Long> {
-    
+
 }
