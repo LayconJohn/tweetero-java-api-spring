@@ -34,10 +34,11 @@ public class TweetController {
     }
 
     @GetMapping
-    public List<Tweet> listAll(@RequestParam(required = false) @PathVariable int page) {
-        List<Tweet> tweets = service.listAll(page, 5).getContent();
-
-        return tweets;
+    public List<Tweet> listAll(
+        @RequestParam(value = "page", required = false, defaultValue = "0") int page,
+        @RequestParam(value = "size", required = true, defaultValue = "5") int size
+        ) {
+        return service.listAll(page, size).getContent();
     }
 
     @GetMapping("/{username}")
