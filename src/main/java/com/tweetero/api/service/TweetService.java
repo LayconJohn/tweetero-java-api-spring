@@ -31,4 +31,19 @@ public class TweetService {
             );
         return new PageImpl<>(repository.findAll(), pageRequest, size);
     }
+
+    public List<Tweet> findByUsername(
+        String username,
+        int page,
+        int size
+    ) {
+        PageRequest pageRequest = PageRequest.of(
+            page,
+            size,
+            Sort.Direction.DESC,
+            "username"
+        );
+        return repository.findByUsername(username.toLowerCase(), pageRequest);
+    }
+
 }

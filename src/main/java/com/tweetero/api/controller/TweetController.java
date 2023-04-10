@@ -3,6 +3,7 @@ package com.tweetero.api.controller;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -37,5 +38,14 @@ public class TweetController {
         List<Tweet> tweets = service.listAll(page, 5).getContent();
 
         return tweets;
+    }
+
+    @GetMapping("/{username}")
+    public List<Tweet> listByUsername(
+        @PathVariable String username,
+        @RequestParam(value = "page", required = false, defaultValue = "0") int page,
+        @RequestParam(value = "size", required = false, defaultValue = "5") int size
+        ) {
+        return service.findByUsername(username, page, size);
     }
 }
